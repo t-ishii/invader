@@ -1,13 +1,24 @@
 extends Area2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+export (int) var speed
 
-# Called when the node enters the scene tree for the first time.
+var screen
+var my
+var direction = 1
+var animation_type = 'right'
+
 func _ready():
-    pass # Replace with function body.
+    my = $Sprite.region_rect.size * $Sprite.scale.x
+    screen = get_viewport_rect().size
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#    pass
+func _on_MoveTimer_timeout():
+    if position.x > screen.x - my.x:
+        direction *= -1
+        animation_type = 'left'
+    elif position.x < my.x:
+        direction *= -1
+        animation_type = 'right'
+    
+    $AnimationPlayer.play(animation_type)
+    
+    position.x += direction * 5
