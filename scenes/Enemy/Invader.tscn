@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://scenes/Enemy/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Enemy/Invader.gd" type="Script" id=1]
 [ext_resource path="res://assets/invader_enemy1.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -54,14 +54,13 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
-speed = null
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 2 )
 hframes = 3
 region_rect = Rect2( 0, 0, 40, 40 )
-_sections_unfolded = [ "Animation", "Region", "Transform" ]
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -77,10 +76,5 @@ anims/right = SubResource( 3 )
 blend_times = [  ]
 _sections_unfolded = [ "Playback Options" ]
 
-[node name="MoveTimer" type="Timer" parent="."]
-process_mode = 1
-wait_time = 2.0
-one_shot = false
-autostart = true
-
-[connection signal="timeout" from="MoveTimer" to="." method="_on_MoveTimer_timeout"]
+[connection signal="body_entered" from="." to="." method="_on_Enemy_body_entered"]
+[connection signal="change_animation" from="." to="." method="_on_Enemy_change_animation"]

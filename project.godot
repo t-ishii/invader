@@ -19,7 +19,11 @@ config/name="invader"
 run/main_scene="res://scenes/Title/Title.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Status="*res://scenes/Status.gd"
+
 [display]
 
-window/size/width=330
+window/size/width=350
 window/size/height=500

@@ -1,9 +1,9 @@
 extends Node
 
-export (PackedScene) var InvaderA
+export (PackedScene) var Invaders
+
+func load_enemies():
+    add_child(Invaders.instance())
 
 func _ready():
-    for i in range(11):
-        var invaderA = InvaderA.instance()
-        invaderA.position = Vector2(15, 0) + Vector2(i * 25, 25)
-        add_child(invaderA)
+    load_enemies()
