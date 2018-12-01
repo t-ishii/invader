@@ -2,12 +2,12 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/invader_enemy1.png-e071ec827200cbc23a7b21b425e0d988.stex"
+path="res://.import/alien_dead.png-a15cea1f012a223accb14ecb8a7c7cbf.stex"
 
 [deps]
 
-source_file="res://assets/invader_enemy1.png"
-dest_files=[ "res://.import/invader_enemy1.png-e071ec827200cbc23a7b21b425e0d988.stex" ]
+source_file="res://assets/alien_dead.png"
+dest_files=[ "res://.import/alien_dead.png-a15cea1f012a223accb14ecb8a7c7cbf.stex" ]
 
 [params]
 

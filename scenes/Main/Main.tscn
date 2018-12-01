@@ -1,9 +1,10 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/Main/Main.gd" type="Script" id=1]
-[ext_resource path="res://scenes/Enemy/Invaders.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Enemy/Enemies.tscn" type="PackedScene" id=2]
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
-Invaders = ExtResource( 2 )
+
+[node name="Enemies" parent="." instance=ExtResource( 2 )]
 
