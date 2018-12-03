@@ -3,7 +3,8 @@ extends Node
 const ALIEN = {
     'W': 11,
     'H': 5,
-    'START_POS': Vector2(40.5, 100),
+    'DURATION': 0.1,
+    'START_POS': Vector2(40.5, 240),
     'MOVE': {
         'SPEED': {
             'X': 5,
@@ -12,3 +13,7 @@ const ALIEN = {
         'LIMIT': 8
     }
 }
+
+const ALIEN_FACE = 'res://assets/alien_face.png'
+const HUMAN = 'res://assets/human.png'
+const INVADER = 'res://assets/invader.png'

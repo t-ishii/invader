@@ -1,16 +1,17 @@
 extends Node2D
 
-export (PackedScene) var Mob
-
 var mobs = []
 var move_count = 2
 var direction = 1
 var move_y = 0
 
-func create_mobs(start_pos):
+const Mob = preload('res://scenes/Enemy/units/Invader.tscn')
+
+func create_mobs(texture, start_pos):
     for i in range(Constant.ALIEN.W):
         var mob = Mob.instance()
         mob.position = start_pos + Vector2(i * 25, 0)
+        mob.load_texture(texture)
         mobs.append(mob)
         add_child(mob)
 
