@@ -7,7 +7,7 @@ const ALIEN = {
     'START_POS': Vector2(40.5, 240),
     'MOVE': {
         'SPEED': {
-            'X': 5,
+            'X': 10,
             'Y': 20
         },
         'LIMIT': 8
