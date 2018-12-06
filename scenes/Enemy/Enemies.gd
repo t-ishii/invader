@@ -75,8 +75,8 @@ func move():
     var left_mob = get_most_left_mob()
     var right_mob = get_most_right_mob()
     var move_y = 0
-    
-    if left_mob == null and right_mob == null:
+
+    if left_mob == null or right_mob == null:
         return
 
     if left_mob.position.x < 25:

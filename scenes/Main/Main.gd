@@ -1,4 +1,4 @@
 extends Node
 
 func _ready():
-    pass
+    $Player.position = $Position2D.position
