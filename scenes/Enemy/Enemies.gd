@@ -45,6 +45,9 @@ func get_most_left_mob():
         for col_idx in range(Constant.ALIEN.W):
             var tmp = mob_lines[row_idx][col_idx]
             
+            if !weakref(tmp).get_ref():
+                continue
+
             if tmp == null:
                 continue
             
@@ -62,6 +65,9 @@ func get_most_right_mob():
         for col_idx in range(Constant.ALIEN.W - 1, -1, -1):
             var tmp = mob_lines[row_idx][col_idx]
 
+            if !weakref(tmp).get_ref():
+                continue
+            
             if tmp == null:
                 continue
 
@@ -91,7 +97,8 @@ func move():
         yield(get_tree().create_timer(Constant.ALIEN.DURATION), 'timeout')
 
         for mob in mobs:
-            if mob != null:
+            if mob != null and weakref(mob).get_ref():
+                mob = weakref(mob).get_ref()
                 mob.play_anime_by_direction(direction)
                 mob.position.x += Constant.ALIEN.MOVE.SPEED.X * direction
                 mob.position.y += move_y

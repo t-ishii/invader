@@ -1,8 +1,10 @@
 extends Area2D
 
 export (int) var speed = 3
+export (PackedScene) var Ballet
 
-var window;
+var window
+var ballet
 
 func _process(delta):
     
@@ -18,7 +20,16 @@ func _process(delta):
     elif position.x > window.x - 10:
         position.x = window.x - 10
     else:
-        position.x += direction * 3
+        position.x += direction * speed
+    
+    if ballet != null and !weakref(ballet).get_ref():
+        ballet = null
+
+    if ballet == null and Input.is_action_pressed('space'):
+        ballet = Ballet.instance()
+        ballet.set_owner_name('Player')
+        ballet.position = position + Vector2(0, -25)
+        get_parent().add_child(ballet)
 
 
 func _ready():
