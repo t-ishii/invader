@@ -9,12 +9,14 @@ custom_solver_bias = 0.0
 radius = 1.26428
 height = 13.8389
 
-[node name="Ballet" type="StaticBody2D"]
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-constant_linear_velocity = Vector2( 0, 0 )
-constant_angular_velocity = 0.0
+[node name="Ballet" type="Area2D"]
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Visibility" ]
 
@@ -33,4 +35,5 @@ position = Vector2( -0.0873719, -0.125223 )
 scale = Vector2( 0.222433, 0.805905 )
 rect = Rect2( -10, -10, 20, 20 )
 
+[connection signal="body_entered" from="." to="." method="_on_Ballet_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
