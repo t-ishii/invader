@@ -27,7 +27,6 @@ func _process(delta):
 
     if ballet == null and Input.is_action_pressed('space'):
         ballet = Ballet.instance()
-        ballet.set_owner_name('Player')
         ballet.position = position + Vector2(0, -25)
         get_parent().add_child(ballet)
 
