@@ -2,7 +2,6 @@ extends Area2D
 
 export (int) var speed = 300
 
-var owner_name
 var regex
 
 func _process(delta):
@@ -10,7 +9,7 @@ func _process(delta):
 
 func _ready():
     regex = RegEx.new()
-    regex.compile('Enemy')
+    regex.compile('(Enemy|UFO)')
 
 func _on_VisibilityNotifier2D_screen_exited():
     queue_free()
@@ -18,5 +17,5 @@ func _on_VisibilityNotifier2D_screen_exited():
 func _on_Ballet_body_entered(body):
     var result = regex.search(body.name)
     if result:
-        body.get_node('AnimationPlayer').play('dead')
+        body.dead()
         queue_free()

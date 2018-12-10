@@ -1,6 +1,7 @@
 extends Node2D
 
 const Enemy = preload('res://scenes/Enemy/Enemy.tscn')
+const UFO = preload('res://scenes/Enemy/UFO.tscn')
 
 var alien_resources = [
     Constant.ALIEN_FACE,
@@ -45,10 +46,7 @@ func get_most_left_mob():
         for col_idx in range(Constant.ALIEN.W):
             var tmp = mob_lines[row_idx][col_idx]
             
-            if !weakref(tmp).get_ref():
-                continue
-
-            if tmp == null:
+            if tmp == null or !tmp.visible:
                 continue
             
             if position == null or position.x > tmp.position.x:
@@ -65,10 +63,7 @@ func get_most_right_mob():
         for col_idx in range(Constant.ALIEN.W - 1, -1, -1):
             var tmp = mob_lines[row_idx][col_idx]
 
-            if !weakref(tmp).get_ref():
-                continue
-            
-            if tmp == null:
+            if tmp == null or !tmp.visible:
                 continue
 
             if position == null or position.x < tmp.position.x:
@@ -81,6 +76,9 @@ func move():
     var left_mob = get_most_left_mob()
     var right_mob = get_most_right_mob()
     var move_y = 0
+    
+    if randi() % 5 == 1:
+        add_child(UFO.instance())
 
     if left_mob == null or right_mob == null:
         return
@@ -97,11 +95,11 @@ func move():
         yield(get_tree().create_timer(Constant.ALIEN.DURATION), 'timeout')
 
         for mob in mobs:
-            if mob != null and weakref(mob).get_ref():
-                mob = weakref(mob).get_ref()
+            if mob != null and mob.status == 'alive':
                 mob.play_anime_by_direction(direction)
                 mob.position.x += Constant.ALIEN.MOVE.SPEED.X * direction
                 mob.position.y += move_y
+
 
 func _ready():
     create_invader_lines()

@@ -1,5 +1,11 @@
 extends StaticBody2D
 
+var status = 'alive'
+
+func dead():
+    status = 'dead'
+    $AnimationPlayer.play('dead')
+
 func load_texture(texture):
     $Sprite.texture = load(texture)
 
