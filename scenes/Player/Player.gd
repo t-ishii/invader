@@ -1,6 +1,6 @@
-extends Area2D
+extends KinematicBody2D
 
-export (int) var speed = 3
+export (int) var speed = 250
 export (PackedScene) var Ballet
 
 var window
@@ -14,13 +14,8 @@ func _process(delta):
         direction = -1
     elif Input.is_action_pressed('right'):
         direction = 1
-
-    if position.x < 10:
-        position.x = 10
-    elif position.x > window.x - 10:
-        position.x = window.x - 10
-    else:
-        position.x += direction * speed
+    
+    move_and_slide(Vector2(speed, 0) * direction)
     
     if ballet != null and !weakref(ballet).get_ref():
         ballet = null

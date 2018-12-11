@@ -3,16 +3,14 @@
 [ext_resource path="res://scenes/Player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/player.png" type="Texture" id=2]
 
-[node name="Player" type="Area2D"]
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
+[node name="Player" type="KinematicBody2D"]
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+motion/sync_to_physics = false
 script = ExtResource( 1 )
-speed = 3
+speed = 250
 Ballet = null
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -21,6 +19,7 @@ texture = ExtResource( 2 )
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform", "texture" ]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2( 1, 1 )
 build_mode = 0
 polygon = PoolVector2Array( -2.4945, -9.96641, -9.95879, 2.43615, -10.0073, 5.19766, -5.20879, 10.0909, 5.16367, 10.0424, 9.96214, 5.14921, 10.0106, 2.3877, 2.49785, -9.96641 )
 

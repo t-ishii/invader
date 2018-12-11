@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/Ballet/EnemyBallet.gd" type="Script" id=1]
+[ext_resource path="res://assets/ballet.png" type="Texture" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 0.65868
+height = 10.9177
+
+[node name="EnemyBallet" type="Area2D"]
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+speed = 150
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.1, 0.3 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+_sections_unfolded = [ "Material", "Pause", "Script", "Visibility" ]
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 0.0379067, 4.06975 )
+scale = Vector2( 0.115945, 0.217358 )
+rect = Rect2( -10, -10, 20, 20 )
+
+[connection signal="body_entered" from="." to="." method="_on_EnemyBallet_body_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

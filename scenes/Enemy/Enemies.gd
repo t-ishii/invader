@@ -46,7 +46,7 @@ func get_most_left_mob():
         for col_idx in range(Constant.ALIEN.W):
             var tmp = mob_lines[row_idx][col_idx]
             
-            if tmp == null or !tmp.visible:
+            if tmp == null or tmp.is_dead:
                 continue
             
             if position == null or position.x > tmp.position.x:
@@ -63,7 +63,7 @@ func get_most_right_mob():
         for col_idx in range(Constant.ALIEN.W - 1, -1, -1):
             var tmp = mob_lines[row_idx][col_idx]
 
-            if tmp == null or !tmp.visible:
+            if tmp == null or tmp.is_dead:
                 continue
 
             if position == null or position.x < tmp.position.x:
@@ -95,13 +95,36 @@ func move():
         yield(get_tree().create_timer(Constant.ALIEN.DURATION), 'timeout')
 
         for mob in mobs:
-            if mob != null and mob.status == 'alive':
+            if mob != null and !mob.is_dead:
                 mob.play_anime_by_direction(direction)
                 mob.position.x += Constant.ALIEN.MOVE.SPEED.X * direction
                 mob.position.y += move_y
 
+func get_under_lines():
+    var under_mobs = []
+    var append_idxs = []
+
+    for row_idx in range(Constant.ALIEN.H):
+        for col_idx in range(Constant.ALIEN.W):
+            var mob = mob_lines[row_idx][col_idx]
+            if !mob.is_dead and append_idxs.find(col_idx) == -1:
+                append_idxs.append(col_idx)
+                under_mobs.append(mob)
+            if append_idxs.size() == Constant.ALIEN.W:
+                break
+
+    return under_mobs
+
+func _process(delta):
+    if randi() % 30 == 1:
+        var mobs = get_under_lines()
+        
+        if mobs.size() > 0:
+            var attack_mob = mobs[randi() % mobs.size()]
+            attack_mob.attack()
 
 func _ready():
+    randomize()
     create_invader_lines()
     show()
     $MoveTimer.start()
