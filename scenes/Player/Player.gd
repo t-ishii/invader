@@ -1,12 +1,23 @@
 extends KinematicBody2D
 
+export (int) var life = 3
 export (int) var speed = 250
 export (PackedScene) var Ballet
 
 var window
 var ballet
+var is_dead = false
+
+func hit():
+    life -= 1
+    if life == 0:
+        is_dead = true
+        $AnimationPlayer.play('dead')
 
 func _process(delta):
+    
+    if is_dead:
+        return
     
     var direction = 0;
     

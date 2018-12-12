@@ -14,5 +14,5 @@ func _on_VisibilityNotifier2D_screen_exited():
 func _on_EnemyBallet_body_entered(body):
     if body.name == 'Player':
         print('Player dead.')
+        body.hit()
         queue_free()
-#        body.dead()
