@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/Main/Main.gd" type="Script" id=1]
-[ext_resource path="res://scenes/Enemy/Enemies.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/Player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/Ballet/Ballet.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Overlay/Overlay.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Enemy/Enemies.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/Ballet/Ballet.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -13,19 +14,21 @@ extents = Vector2( 10, 33.8849 )
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
 
-[node name="Enemies" parent="." instance=ExtResource( 2 )]
+[node name="Overlay" parent="." instance=ExtResource( 2 )]
 
-[node name="Player" parent="." instance=ExtResource( 3 )]
+[node name="Enemies" parent="." instance=ExtResource( 3 )]
+
+[node name="Player" parent="." instance=ExtResource( 4 )]
 _sections_unfolded = [ "Transform" ]
 speed = 200
-Ballet = ExtResource( 4 )
+Ballet = ExtResource( 5 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 180, 405 )
+position = Vector2( 180, 440 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Wall_L" type="StaticBody2D" parent="."]
-position = Vector2( -1, 400 )
+position = Vector2( -1, 430 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
@@ -38,7 +41,7 @@ position = Vector2( -8.62, 0 )
 shape = SubResource( 1 )
 
 [node name="Wall_R" type="StaticBody2D" parent="."]
-position = Vector2( 367, 400 )
+position = Vector2( 367, 430 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1

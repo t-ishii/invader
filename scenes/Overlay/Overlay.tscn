@@ -1,0 +1,27 @@
+[gd_scene format=2]
+
+[node name="Overlay" type="CanvasLayer"]
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="Top" type="Line2D" parent="."]
+points = PoolVector2Array( 0, 30, 350, 30 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = 1043894483
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "points" ]
+
+[node name="Down" type="Line2D" parent="."]
+points = PoolVector2Array( 0, 470, 350, 470 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+texture_mode = 1043894483
+sharp_limit = 2.0
+round_precision = 8
+_sections_unfolded = [ "points" ]
+
