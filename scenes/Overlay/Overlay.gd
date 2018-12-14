@@ -10,7 +10,7 @@ func _ready():
         add_child(sprite)
         players.append(sprite.name)
 
-func _on_Player_hit(life):
+func _on_Player_hit():
     var target = players.pop_back()
     for node in get_children():
         if node.name == target:

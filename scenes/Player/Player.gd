@@ -12,7 +12,7 @@ var is_dead = false
 
 func hit():
     life -= 1
-    emit_signal('hit', life)
+    emit_signal('hit')
     if life == 0:
         is_dead = true
         $AnimationPlayer.play('dead')
