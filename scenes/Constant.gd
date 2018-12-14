@@ -1,5 +1,9 @@
 extends Node
 
+const PLAYER = {
+    'LIFE': 3
+}
+
 const ALIEN = {
     'W': 11,
     'H': 5,

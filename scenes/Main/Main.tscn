@@ -24,7 +24,7 @@ speed = 200
 Ballet = ExtResource( 5 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( 180, 440 )
+position = Vector2( 180, 445 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Wall_L" type="StaticBody2D" parent="."]
@@ -53,3 +53,4 @@ _sections_unfolded = [ "Transform" ]
 position = Vector2( -7.29388, 0 )
 shape = SubResource( 1 )
 
+[connection signal="hit" from="Player" to="Overlay" method="_on_Player_hit"]
