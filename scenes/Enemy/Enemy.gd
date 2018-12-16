@@ -9,10 +9,10 @@ func dead():
     $AnimationPlayer.play('dead')
 
 func attack():
-    print('Attack:', position)
     var ballet = EnemyBallet.instance()
     ballet.position = position + Vector2(0, 25)
-    get_node('/root/Main').add_child(ballet)
+    if has_node('/root/Main'):
+        get_node('/root/Main').add_child(ballet)
 
 func load_texture(texture):
     $Sprite.texture = load(texture)

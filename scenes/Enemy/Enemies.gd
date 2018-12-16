@@ -13,6 +13,7 @@ var alien_resources = [
 
 var mob_lines = []
 var direction = 1
+var is_stop = false
 
 func create_invader_lines():
     var span = Vector2(0, 35)
@@ -46,7 +47,7 @@ func get_most_left_mob():
         for col_idx in range(Constant.ALIEN.W):
             var tmp = mob_lines[row_idx][col_idx]
             
-            if tmp == null or tmp.is_dead:
+            if tmp.is_dead:
                 continue
             
             if position == null or position.x > tmp.position.x:
@@ -63,7 +64,7 @@ func get_most_right_mob():
         for col_idx in range(Constant.ALIEN.W - 1, -1, -1):
             var tmp = mob_lines[row_idx][col_idx]
 
-            if tmp == null or tmp.is_dead:
+            if tmp.is_dead:
                 continue
 
             if position == null or position.x < tmp.position.x:
@@ -115,8 +116,16 @@ func get_under_lines():
 
     return under_mobs
 
+func _on_Player_hit(life):
+    is_stop = true
+    $MoveTimer.stop()
+
+func _on_Player_wakeup():
+    is_stop = false
+    $MoveTimer.start()
+
 func _process(delta):
-    if randi() % 30 == 1:
+    if randi() % 30 == 1 and !is_stop:
         var mobs = get_under_lines()
         
         if mobs.size() > 0:

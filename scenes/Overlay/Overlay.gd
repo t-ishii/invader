@@ -5,7 +5,7 @@ var players = []
 func _ready():
     players.append($PlayerSprite.name)
     for i in range(Constant.PLAYER.LIFE - 1):
-        var sprite = $PlayerSprite.duplicate()
+        var sprite = $PlayerSprite.duplicate(DUPLICATE_GROUPS)
         sprite.position = sprite.position + Vector2(30 + 30 * i, 0)
         add_child(sprite)
         players.append(sprite.name)
