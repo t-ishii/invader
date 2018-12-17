@@ -1,6 +1,5 @@
 extends KinematicBody2D
 
-export (int) var life = 3
 export (int) var speed = 250
 export (PackedScene) var Ballet
 
@@ -12,13 +11,12 @@ var ballet
 var is_dead = false
 
 func hit():
-    life -= 1
     is_dead = true
     emit_signal('hit')
-    $AnimationPlayer.play('dead', life)
+    $AnimationPlayer.play('dead')
 
 func connects():
-    # bind signals when resborn at player
+    # bind signals when player resborn
     connect('hit', get_parent(), '_on_Player_hit')
     connect('hit', get_node('/root/Main/Overlay'), '_on_Player_hit')
     connect('hit', get_node('/root/Main/Enemies'), '_on_Player_hit')

@@ -1,6 +1,7 @@
 extends Node
 
 var clone_player
+var player_dead_count = 0
 
 func _ready():
     $Player.position = $Position2D.position
@@ -11,5 +12,7 @@ func _on_ResbornTimer_timeout():
     add_child(clone_player.duplicate())
 
 func _on_Player_hit():
-    $ResbornTimer.start()
-    print('hit!')
+    player_dead_count += 1
+    if player_dead_count < Constant.PLAYER.LIFE:
+        $ResbornTimer.start()
+    print('dead!')
