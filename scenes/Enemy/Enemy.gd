@@ -24,3 +24,6 @@ func play_anime_by_direction(direction):
 
     if $AnimationPlayer.current_animation != 'dead':
         $AnimationPlayer.play(animation_type)
+
+func stop_animation():
+    $AnimationPlayer.stop()

@@ -116,8 +116,16 @@ func get_under_lines():
 
     return under_mobs
 
-func _on_Player_hit(life):
+func stop_enemies():
+    for mobs in mob_lines:
+        for mob in mobs:
+            if mob.is_dead:
+                continue
+            mob.stop_animation()
+
+func _on_Player_hit():
     is_stop = true
+    stop_enemies()
     $MoveTimer.stop()
 
 func _on_Player_wakeup():
