@@ -24,6 +24,14 @@ func create_invader_lines():
 
         for i in range(Constant.ALIEN.W):
             var mob = Enemy.instance()
+            var col = mob_lines.size()
+
+            if col < 2:
+                mob.set_score(10)
+            elif col < 4:
+                mob.set_score(20)
+            else:
+                mob.set_score(30)
 
             mob.load_texture(res)
             mob.position = pos + Vector2(mobs.size() * 25, 0)

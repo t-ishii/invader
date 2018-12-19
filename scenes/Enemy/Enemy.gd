@@ -3,6 +3,7 @@ extends StaticBody2D
 const EnemyBallet = preload('res://scenes/Ballet/EnemyBallet.tscn')
 
 var is_dead = false
+var score = 0
 
 func dead():
     is_dead = true
@@ -16,6 +17,9 @@ func attack():
 
 func load_texture(texture):
     $Sprite.texture = load(texture)
+
+func set_score(score):
+    self.score = score
 
 func play_anime_by_direction(direction):
     var animation_type = 'left'
