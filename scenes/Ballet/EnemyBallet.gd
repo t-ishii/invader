@@ -1,12 +1,14 @@
-extends Area2D
+extends RigidBody2D
 
 export (int) var speed = 150
 
-func _process(delta):
-    position.y += delta * speed
+# ToDo ballet -> bullet
+
+func dead():
+    print('collision with player bullet')
 
 func _ready():
-    pass
+    linear_velocity = Vector2(0, speed)
 
 func _on_VisibilityNotifier2D_screen_exited():
     queue_free()

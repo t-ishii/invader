@@ -1,13 +1,16 @@
-extends Area2D
+extends RigidBody2D
 
 export (int) var speed = 400
 
 var regex
 
-func _process(delta):
-    position.y -= delta * speed
+# ToDo ballet -> bullet
+
+func dead():
+    print('collision with enemy bullet')
 
 func _ready():
+    linear_velocity = Vector2(0, -speed)
     regex = RegEx.new()
     regex.compile('(Enemy|UFO)')
 
