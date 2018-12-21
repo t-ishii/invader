@@ -15,4 +15,3 @@ func _on_Player_hit():
     player_dead_count += 1
     if player_dead_count < Constant.PLAYER.LIFE:
         $ResbornTimer.start()
-    print('dead!')

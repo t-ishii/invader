@@ -6,7 +6,7 @@
 [sub_resource type="CapsuleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 0.65868
+radius = 1.15979
 height = 10.9177
 
 [node name="Ballet" type="RigidBody2D"]
@@ -36,7 +36,6 @@ texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2( 1, 1 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Material", "Pause", "Script", "Visibility" ]
 
