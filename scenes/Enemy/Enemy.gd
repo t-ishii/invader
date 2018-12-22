@@ -11,7 +11,7 @@ func dead():
 
 func attack():
     var ballet = EnemyBallet.instance()
-    ballet.position = position + Vector2(0, 25)
+    ballet.position = position + Vector2(0, 30)
     if has_node('/root/Main'):
         get_node('/root/Main').add_child(ballet)
 
