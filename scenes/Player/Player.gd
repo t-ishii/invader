@@ -23,19 +23,19 @@ func connects():
     connect('wakeup', get_node('/root/Main/Enemies'), '_on_Player_wakeup')
 
 func _process(delta):
-    
+
     if is_dead:
         return
-    
+
     var direction = 0;
-    
+
     if Input.is_action_pressed('left'):
         direction = -1
     elif Input.is_action_pressed('right'):
         direction = 1
-    
+
     move_and_slide(Vector2(speed, 0) * direction)
-    
+
     if ballet != null and !weakref(ballet).get_ref():
         ballet = null
 

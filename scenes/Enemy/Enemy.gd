@@ -7,6 +7,7 @@ var score = 0
 
 func dead():
     is_dead = true
+    Status.score += score
     $AnimationPlayer.play('dead')
 
 func attack():

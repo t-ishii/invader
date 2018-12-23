@@ -22,6 +22,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Constant="*res://scenes/Constant.gd"
+Status="*res://scenes/Status.gd"
 
 [display]
 

@@ -50,14 +50,14 @@ func show():
 func get_most_left_mob():
     var mob = null
     var position = null
-    
+
     for row_idx in range(Constant.ALIEN.H):
         for col_idx in range(Constant.ALIEN.W):
             var tmp = mob_lines[row_idx][col_idx]
-            
+
             if tmp.is_dead:
                 continue
-            
+
             if position == null or position.x > tmp.position.x:
                 position = tmp.position
                 mob = tmp
@@ -67,7 +67,7 @@ func get_most_left_mob():
 func get_most_right_mob():
     var mob = null
     var position = null
-    
+
     for row_idx in range(Constant.ALIEN.H - 1, -1, -1):
         for col_idx in range(Constant.ALIEN.W - 1, -1, -1):
             var tmp = mob_lines[row_idx][col_idx]
@@ -85,7 +85,7 @@ func move():
     var left_mob = get_most_left_mob()
     var right_mob = get_most_right_mob()
     var move_y = 0
-    
+
     if randi() % 5 == 1:
         add_child(UFO.instance())
 
@@ -143,7 +143,7 @@ func _on_Player_wakeup():
 func _process(delta):
     if randi() % 30 == 1 and !is_stop:
         var mobs = get_under_lines()
-        
+
         if mobs.size() > 0:
             var attack_mob = mobs[randi() % mobs.size()]
             attack_mob.attack()
