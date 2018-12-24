@@ -2,6 +2,9 @@ extends CanvasLayer
 
 var players = []
 
+func _process(delta):
+    $ScoreValueL.text = '%04d' % Status.score
+
 func _ready():
     players.append($PlayerSprite.name)
     for i in range(Constant.PLAYER.LIFE - 1):

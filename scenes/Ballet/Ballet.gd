@@ -18,7 +18,7 @@ func _on_VisibilityNotifier2D_screen_exited():
     queue_free()
 
 func _on_Ballet_body_entered(body):
-    if body_regex.search(body.name):
+    if body_regex.search(body.name) || body.name == 'Enemy':
         body.dead()
         queue_free()
     elif bullet_regex.search(body.name):
