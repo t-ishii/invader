@@ -9,6 +9,7 @@ signal wakeup
 var window
 var ballet
 var is_dead = false
+var body_regex
 
 func hit():
     is_dead = true
@@ -44,8 +45,15 @@ func _process(delta):
         ballet.position = position + Vector2(0, -25)
         get_parent().add_child(ballet)
 
+    var body = get_slide_collision(get_slide_count() - 1)
+    if body:
+        var body_name = body.collider.name
+        if body_regex.search(body_name) || body_name == 'Enemy':
+            hit()
 
 func _ready():
     connects()
+    body_regex = RegEx.new()
+    body_regex.compile('@Enemy@')
     window = get_viewport_rect().size
     emit_signal('wakeup')
