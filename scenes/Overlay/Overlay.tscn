@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://scenes/Overlay/Overlay.gd" type="Script" id=1]
-[ext_resource path="res://assets/player.png" type="Texture" id=2]
 
 [node name="Overlay" type="CanvasLayer"]
 layer = 1
@@ -10,21 +9,7 @@ rotation = 0.0
 scale = Vector2( 1, 1 )
 transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 1 )
-
-[node name="Down" type="Line2D" parent="."]
-points = PoolVector2Array( 0, 470, 350, 470 )
-width = 2.0
-default_color = Color( 0, 0, 0, 1 )
-texture_mode = 1043894483
-sharp_limit = 2.0
-round_precision = 8
-_sections_unfolded = [ "points" ]
-
-[node name="PlayerSprite" type="Sprite" parent="."]
-position = Vector2( 12.3737, 485.144 )
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 2 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Script" ]
 
 [node name="HighScore" type="Label" parent="."]
 anchor_left = 0.0
