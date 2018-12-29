@@ -19,7 +19,7 @@ func hit():
 func connects():
     # bind signals when player resborn
     connect('hit', get_parent(), '_on_Player_hit')
-    connect('hit', get_node('/root/Main/Overlay'), '_on_Player_hit')
+    connect('hit', get_node('/root/Main/PlayerOverlay'), '_on_Player_hit')
     connect('hit', get_node('/root/Main/Enemies'), '_on_Player_hit')
     connect('wakeup', get_node('/root/Main/Enemies'), '_on_Player_wakeup')
 

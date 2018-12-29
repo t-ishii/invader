@@ -12,56 +12,68 @@
 custom_solver_bias = 0.0
 extents = Vector2( 10, 33.8849 )
 
-[node name="Main" type="Node"]
+[node name="Main" type="Node" index="0"]
+
 script = ExtResource( 1 )
 
-[node name="Overlay" parent="." instance=ExtResource( 2 )]
-scale = Vector2( 1, 1 )
+[node name="Overlay" parent="." index="0" instance=ExtResource( 2 )]
 
-[node name="PlayerOverlay" parent="." instance=ExtResource( 3 )]
+[node name="PlayerOverlay" parent="." index="1" instance=ExtResource( 3 )]
 
-[node name="Enemies" parent="." instance=ExtResource( 4 )]
+[node name="Enemies" parent="." index="2" instance=ExtResource( 4 )]
 
-[node name="Player" parent="." instance=ExtResource( 5 )]
+[node name="Player" parent="." index="3" instance=ExtResource( 5 )]
+
 _sections_unfolded = [ "Transform" ]
 speed = 200
 Ballet = ExtResource( 6 )
 
-[node name="Position2D" type="Position2D" parent="."]
+[node name="Position2D" type="Position2D" parent="." index="4"]
+
 position = Vector2( 30, 445 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Wall_L" type="StaticBody2D" parent="."]
+[node name="Wall_L" type="StaticBody2D" parent="." index="5"]
+
 position = Vector2( -1, 430 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
 _sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_L"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_L" index="0"]
+
 position = Vector2( -8.62, 0 )
 shape = SubResource( 1 )
 
-[node name="Wall_R" type="StaticBody2D" parent="."]
+[node name="Wall_R" type="StaticBody2D" parent="." index="6"]
+
 position = Vector2( 367, 430 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
 _sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_R"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_R" index="0"]
+
 position = Vector2( -7.29388, 0 )
 shape = SubResource( 1 )
 
-[node name="ResbornTimer" type="Timer" parent="."]
+[node name="ResbornTimer" type="Timer" parent="." index="7"]
+
 process_mode = 1
 wait_time = 2.0
 one_shot = false
 autostart = false
 
-[connection signal="hit" from="Player" to="PlayerOverlay" method="_on_Player_hit"]
 [connection signal="timeout" from="ResbornTimer" to="." method="_on_ResbornTimer_timeout"]
+
+
